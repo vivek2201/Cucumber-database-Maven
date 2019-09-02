@@ -20,7 +20,7 @@ public class Base
 			//System.setProperty("webdriver.chrome.driver","C:\Users\PriyaS\eclipse-workspace\CucumberPractise\Driver\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", "Driver/chromedriver.exe");
 		Properties prop= new Properties();//create a instance of properties file
-		FileInputStream fis=new FileInputStream("C:\\Users\\PriyaS\\eclipse-workspace\\Maven\\src\\main\\java\\ObjectRepo\\Source.properties");
+		FileInputStream fis=new FileInputStream("C:\\Users\\PriyaS\\eclipse-workspace\\CucumberPractise\\src\\main\\java\\ObjectDirectory\\Object.properties");
 		prop.load(fis);
 		String browser= prop.getProperty("Browser");
 		String URL= prop.getProperty("URL");

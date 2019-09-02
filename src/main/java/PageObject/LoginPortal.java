@@ -1,12 +1,12 @@
 package PageObject;
-
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.openqa.selenium.By;
+import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,11 +30,16 @@ public class LoginPortal {
 	
 	
 	
-	public void enterUsernameAndPassword() throws SQLException
+	public void enterUsernameAndPassword() throws SQLException, IOException
 	{
-		
-		 String connectionURL="jdbc:mysql://localhost:3306/qadb?autoReconnect=true&useSSL=false";// autoReconnect=true is using because mySQL connect is abort automatically
-			Connection con=DriverManager.getConnection(connectionURL, "root", "revolutionit.com.au");
+		Properties prop= new Properties();//create a instance of properties file
+		FileInputStream fis=new FileInputStream("C:\\Users\\PriyaS\\eclipse-workspace\\CucumberPractise\\src\\main\\java\\ObjectDirectory\\Object.properties");
+		prop.load(fis);
+		String ConnectionURL= prop.getProperty("DatabaseURL");
+		String DatabaseUsername=prop.getProperty("DatabaseUsername");
+		String DatabasePassword=prop.getProperty("DatabasePassword");
+		 //String connectionURL="jdbc:mysql://localhost:3306/qadb?autoReconnect=true&useSSL=false";// autoReconnect=true is using because mySQL connect is abort automatically
+			Connection con=DriverManager.getConnection(ConnectionURL, DatabaseUsername, DatabasePassword);
 			Statement s=con.createStatement();
 			ResultSet rs=s.executeQuery("select * from employeeinfo;");
 			rs.next();
