@@ -77,6 +77,12 @@ public class StepDefinition extends Base{
 	    // Write code here that turns the phrase above into concrete actions
 	   
 	}
+@Then("^Close Browser$")
+public void close_Browser() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+	driver.close();//close the current browser
+    driver.quit();//quit the driver session
+}
 
 
 
